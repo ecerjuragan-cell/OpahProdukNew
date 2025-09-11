@@ -1,4 +1,5 @@
-<!DOCTYPE html><html lang="id">
+<!DOCTYPE html>
+<html lang="id">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,7 +12,6 @@ body {
     color: white;
     overflow-x: hidden;
 }
-/* Overlay untuk nama */
 #overlay {
     position: fixed;
     top: 0;
@@ -41,39 +41,6 @@ body {
     border-radius: 5px;
     cursor: pointer;
 }
-/* Animasi Background */
-@keyframes moveLight {
-    0% {transform: translateX(0);} 
-    50% {transform: translateX(20px);} 
-    100% {transform: translateX(0);}
-}
-.lamp {
-    position: absolute;
-    width: 10px;
-    height: 10px;
-    background: yellow;
-    border-radius: 50%;
-    animation: moveLight 2s infinite;
-}
-/* Card 3D */
-.card {
-    background: #111;
-    border-radius: 15px;
-    padding: 20px;
-    margin: 20px;
-    width: 250px;
-    transform: perspective(600px) rotateY(10deg);
-    box-shadow: 0 0 20px rgba(255,255,255,0.2);
-}
-.card button {
-    padding: 10px;
-    border: none;
-    background: #27ae60;
-    color: white;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-top: 10px;
-}
 </style>
 </head>
 <body>
@@ -82,9 +49,7 @@ body {
     <input type="text" id="username" placeholder="Nama...">
     <button onclick="enterSite()">Masuk</button>
 </div>
-<div id="cards" style="display:flex; flex-wrap: wrap; justify-content:center; padding-top:50px;"></div>
 <script>
-// Nama Overlay
 function enterSite() {
     const name = document.getElementById('username').value.trim();
     if(name === '') {
@@ -93,21 +58,13 @@ function enterSite() {
     }
     localStorage.setItem('username', name);
     document.getElementById('overlay').style.display = 'none';
-    renderCards();
 }
 window.onload = function() {
     const savedName = localStorage.getItem('username');
     if(savedName) {
         document.getElementById('overlay').style.display = 'none';
-        renderCards();
     }
-}// Data produk const listJasteb = [ {price:'5k', amount:'100 JASTEB'}, {price:'8k', amount:'130 JASTEB'}, {price:'10k', amount:'150 JASTEB'}, {price:'15k', amount:'200 JASTEB'}, {price:'20k', amount:'250 JASTEB'}, {price:'25k', amount:'300 JASTEB'}, {price:'30k', amount:'400 JASTEB'}, {price:'40k', amount:'500 JASTEB'}, {price:'50k', amount:'1000 JASTEB'} ];
-
-function renderCards() { const container = document.getElementById('cards'); listJasteb.forEach(item => { const card = document.createElement('div'); card.className = 'card'; card.innerHTML = <h3>${item.price}</h3><p>${item.amount}</p> + <button onclick="buy('${item.price}', '${item.amount}')">Beli Sekarang</button>; container.appendChild(card); }); }
-
-function buy(price, amount) { const name = localStorage.getItem('username'); const text = *HALO OPAH SAYA MAU BELI*%0A%0APRODUK: ${amount}%0AHARGANYA: ${price}%0APAYMENT:%0ADANA:085828481568%0AQRIS:MINTA KE ADMIN AJA; window.open(https://wa.me/081220568534?text=${text}, '_blank'); }
-
-// Tambah lampu animasi for(let i=0;i<30;i++){ const lamp = document.createElement('div'); lamp.className = 'lamp'; lamp.style.top = Math.random()*window.innerHeight+'px'; lamp.style.left = Math.random()*window.innerWidth+'px'; lamp.style.animationDuration = 1+Math.random()*2+'s'; document.body.appendChild(lamp); } </script>
-
+}
+</script>
 </body>
 </html>
