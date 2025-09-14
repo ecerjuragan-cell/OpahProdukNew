@@ -3,103 +3,91 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>XPanel - Produk</title>
+  <title>Produk Opah</title>
   <style>
     body {
       margin: 0;
-      font-family: "Poppins", sans-serif;
-      background: url('https://source.unsplash.com/1920x1080/?beach,sunset') no-repeat center center/cover;
+      font-family: Arial, sans-serif;
+      background: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
+      height: 100vh;
       display: flex;
       justify-content: center;
       align-items: center;
-      min-height: 100vh;
     }
-
     .card {
-      background: rgba(255, 255, 255, 0.15);
-      border-radius: 20px;
-      backdrop-filter: blur(15px);
-      -webkit-backdrop-filter: blur(15px);
+      background: rgba(255,255,255,0.2);
+      backdrop-filter: blur(10px);
+      border-radius: 15px;
       padding: 25px;
-      width: 370px;
-      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
-      color: #fff;
-      max-height: 90vh;
-      overflow-y: auto;
+      width: 320px;
       text-align: center;
+      color: white;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
     }
-
-    .hidden { display: none; }
-
-    h2 {
-      margin-bottom: 15px;
-    }
-
     input {
       width: 100%;
       padding: 12px;
-      margin: 8px 0;
+      margin: 10px 0;
       border: none;
-      border-radius: 10px;
-      outline: none;
+      border-radius: 8px;
     }
-
-    .btn {
-      padding: 8px 16px;
+    button {
+      width: 100%;
+      padding: 12px;
+      margin-top: 10px;
       border: none;
-      border-radius: 20px;
-      font-size: 14px;
+      border-radius: 8px;
       cursor: pointer;
-      background: linear-gradient(90deg, #9b5de5, #f15bb5, #fee440);
-      color: #fff;
-      text-decoration: none;
+      background: linear-gradient(45deg, #6a5acd, #ff69b4);
+      color: white;
+      font-weight: bold;
       transition: 0.3s;
     }
-
-    .btn:hover {
+    button:hover {
       opacity: 0.9;
-      transform: scale(1.05);
     }
-
-    .product {
-      background: rgba(255,255,255,0.1);
-      padding: 15px;
-      border-radius: 15px;
-      margin: 10px 0;
+    .produk {
+      display: none;
+      flex-direction: column;
+      gap: 12px;
     }
-
-    .product h3 {
-      margin: 0 0 8px 0;
-      font-size: 16px;
+    .produk h2 {
+      margin-bottom: 10px;
     }
-
-    /* Popup */
+    .produk .item {
+      background: rgba(255,255,255,0.15);
+      padding: 12px;
+      border-radius: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
     .popup {
+      display: none;
       position: fixed;
       top: 0; left: 0;
       width: 100%; height: 100%;
-      background: rgba(0,0,0,0.5);
-      display: flex;
+      background: rgba(0,0,0,0.6);
       justify-content: center;
       align-items: center;
     }
-
     .popup-content {
-      background: rgba(255, 255, 255, 0.15);
-      backdrop-filter: blur(15px);
-      padding: 20px;
-      border-radius: 20px;
+      background: rgba(255,255,255,0.9);
+      padding: 25px;
+      border-radius: 15px;
       text-align: center;
-      width: 280px;
-      color: #fff;
+      width: 260px;
     }
-
     .popup-content h3 {
       margin-bottom: 15px;
+      color: #333;
     }
-
-    .popup button {
-      margin: 5px;
+    .popup-content button {
+      margin: 5px 0;
+      width: 80%;
+    }
+    .btn-cancel {
+      background: gray;
     }
   </style>
 </head>
@@ -110,38 +98,40 @@
     <h2>Login</h2>
     <input type="text" id="username" placeholder="Username">
     <input type="password" id="password" placeholder="Password">
-    <button class="btn" onclick="login()">Masuk</button>
-    <p id="error" style="color:#ff8080; display:none;">Username / Password salah!</p>
+    <button onclick="login()">Masuk</button>
   </div>
 
   <!-- PRODUK -->
-  <div class="card hidden" id="produkCard">
-    <h2>📋 LIST JASTEB VVIP</h2>
-
-    <div class="product"><h3>2K : 50+ RESS</h3><button class="btn" onclick="openPopup('2K : 50+ RESS')">Beli</button></div>
-    <div class="product"><h3>3K : 80+ RESS</h3><button class="btn" onclick="openPopup('3K : 80+ RESS')">Beli</button></div>
-    <div class="product"><h3>4K : 100+ RESS</h3><button class="btn" onclick="openPopup('4K : 100+ RESS')">Beli</button></div>
-    <div class="product"><h3>5K : 130+ RESS</h3><button class="btn" onclick="openPopup('5K : 130+ RESS')">Beli</button></div>
-    <div class="product"><h3>6K : 150+ RESS</h3><button class="btn" onclick="openPopup('6K : 150+ RESS')">Beli</button></div>
-    <div class="product"><h3>7K : 200+ RESS</h3><button class="btn" onclick="openPopup('7K : 200+ RESS')">Beli</button></div>
-    <div class="product"><h3>8K : 250+ RESS</h3><button class="btn" onclick="openPopup('8K : 250+ RESS')">Beli</button></div>
-    <div class="product"><h3>9K : 350+ RESS</h3><button class="btn" onclick="openPopup('9K : 350+ RESS')">Beli</button></div>
-    <div class="product"><h3>10K : 500+ RESS</h3><button class="btn" onclick="openPopup('10K : 500+ RESS')">Beli</button></div>
-    <div class="product"><h3>12K : 600+ RESS</h3><button class="btn" onclick="openPopup('12K : 600+ RESS')">Beli</button></div>
-    <div class="product"><h3>14K : 50+ RESS</h3><button class="btn" onclick="openPopup('14K : 50+ RESS')">Beli</button></div>
-    <div class="product"><h3>15K : 700+ RESS</h3><button class="btn" onclick="openPopup('15K : 700+ RESS')">Beli</button></div>
-
-    <p style="margin-top:15px;"><b>RESS MURNI JAMIN BERISI ✅</b></p>
+  <div class="card produk" id="produkCard">
+    <h2>𝗝𝗔𝗦𝗧𝗘𝗕</h2>
+    <div class="item"><span>𝗝𝗔𝗦𝗧𝗘𝗕 𝗦𝗚𝗠𝗔𝗜𝗟</span><button onclick="openPopup('JASTEB SGMAIL')">Beli</button></div>
+    <div class="item"><span>𝗧𝗘𝗔𝗠 𝗥𝗘𝗦𝗦</span><button onclick="openPopup('TEAM RESS')">Beli</button></div>
+    <div class="item"><span>𝗘𝗖𝗘𝗥𝗔𝗡 𝗚𝗔𝗖𝗢𝗥</span><button onclick="openPopup('ECERAN GACOR')">Beli</button></div>
+    <div class="item"><span>𝗣𝗧 𝗝𝗔𝗦𝗧𝗘𝗕</span><button onclick="openPopup('PT JASTEB')">Beli</button></div>
+    <div class="item"><span>𝗢𝗣𝗘𝗡 𝗦𝗘𝗪𝗔 𝗣𝗔𝗡𝗘𝗟</span><button onclick="openPopup('OPEN SEWA PANEL JASTEB')">Beli</button></div>
+    <h3>📋 LIST JASTEB VVIP</h3>
+    <div class="item"><span>2K : 50+ RESS</span><button onclick="openPopup('2K : 50+ RESS')">Beli</button></div>
+    <div class="item"><span>3K : 80+ RESS</span><button onclick="openPopup('3K : 80+ RESS')">Beli</button></div>
+    <div class="item"><span>4K : 100+ RESS</span><button onclick="openPopup('4K : 100+ RESS')">Beli</button></div>
+    <div class="item"><span>5K : 130+ RESS</span><button onclick="openPopup('5K : 130+ RESS')">Beli</button></div>
+    <div class="item"><span>6K : 150+ RESS</span><button onclick="openPopup('6K : 150+ RESS')">Beli</button></div>
+    <div class="item"><span>7K : 200+ RESS</span><button onclick="openPopup('7K : 200+ RESS')">Beli</button></div>
+    <div class="item"><span>8K : 250+ RESS</span><button onclick="openPopup('8K : 250+ RESS')">Beli</button></div>
+    <div class="item"><span>9K : 350+ RESS</span><button onclick="openPopup('9K : 350+ RESS')">Beli</button></div>
+    <div class="item"><span>10K : 500+ RESS</span><button onclick="openPopup('10K : 500+ RESS')">Beli</button></div>
+    <div class="item"><span>12K : 600+ RESS</span><button onclick="openPopup('12K : 600+ RESS')">Beli</button></div>
+    <div class="item"><span>14K : 50+ RESS</span><button onclick="openPopup('14K : 50+ RESS')">Beli</button></div>
+    <div class="item"><span>15K : 700+ RESS</span><button onclick="openPopup('15K : 700+ RESS')">Beli</button></div>
+    <p><i>RESS MURNI JAMIN BERISI</i></p>
   </div>
 
   <!-- POPUP -->
-  <div class="popup hidden" id="popup">
+  <div class="popup" id="popup">
     <div class="popup-content">
       <h3>Pilih Payment</h3>
-      <button class="btn" onclick="pay('Dana')">Dana</button>
-      <button class="btn" onclick="pay('QRIS')">QRIS</button>
-      <br><br>
-      <button class="btn" style="background:#999;" onclick="closePopup()">Batal</button>
+      <button onclick="pay('Dana')">Dana</button>
+      <button onclick="pay('QRIS')">QRIS</button>
+      <button class="btn-cancel" onclick="closePopup()">Batal</button>
     </div>
   </div>
 
@@ -151,27 +141,28 @@
     function login() {
       const user = document.getElementById("username").value;
       const pass = document.getElementById("password").value;
-      const error = document.getElementById("error");
       if(user === "Opah" && pass === "Hosting") {
-        document.getElementById("loginCard").classList.add("hidden");
-        document.getElementById("produkCard").classList.remove("hidden");
+        document.getElementById("loginCard").style.display = "none";
+        document.getElementById("produkCard").style.display = "flex";
       } else {
-        error.style.display = "block";
+        alert("Username atau password salah!");
       }
     }
 
     function openPopup(product) {
       selectedProduct = product;
-      document.getElementById("popup").classList.remove("hidden");
+      document.getElementById("popup").style.display = "flex";
     }
 
     function closePopup() {
-      document.getElementById("popup").classList.add("hidden");
+      document.getElementById("popup").style.display = "none";
     }
 
     function pay(method) {
-      let msg = `Halo, saya ingin membeli ${selectedProduct} via ${method}`;
-      window.location.href = `https://wa.me/6281220568534?text=${encodeURIComponent(msg)}`;
+      const wa = "6281220568534";
+      const text = `Halo, saya ingin beli ${selectedProduct} via ${method}`;
+      window.open(`https://wa.me/${wa}?text=${encodeURIComponent(text)}`, "_blank");
+      closePopup();
     }
   </script>
 
